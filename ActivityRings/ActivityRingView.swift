@@ -47,16 +47,17 @@ struct ActivityRingView: View {
                     .stroke(Color.angularGradiantFrom(finalColors: [darkColor, darkerColor]), style: .init(lineWidth: 30.0, lineCap: .round))
                     .rotationEffect(.degrees(-90.0))
             }
-            .animation(.bouncy(duration: 0.3), value: percentage)
+            .animation(.bouncy(duration: 5.0), value: percentage)
 
             Circle()
                 .fill(percentage > 1.0 ? darkColor : .clear)
                 .frame(height: 30.0)
                 .offset(y: -height/2)
+                .animation(.easeIn(duration: 0.1), value: percentage)
         }
         .frame(height: height)
         .onAppear(perform: {
-            percentage = 0.4
+            percentage = 1.3
         })
         .onTapGesture() {
             percentage += 0.2
